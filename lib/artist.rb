@@ -11,6 +11,7 @@ class Artist
   
   def add_song(song)
     @songs << song
+    self.save unless @@all.include?(self)
   end
   
   def save
@@ -20,6 +21,8 @@ class Artist
   def self.all
     @@all
   end
+  
+  
   
   def self.find_or_create_by_name(artist_name)
     @@all.each do |artist|
